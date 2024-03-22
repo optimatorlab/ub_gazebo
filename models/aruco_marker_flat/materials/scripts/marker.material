@@ -1,0 +1,180 @@
+material marker120
+{
+  receive_shadows on
+
+  technique
+  {
+    pass
+    {
+
+      ambient 1 1 1 1.000000
+      diffuse 1 1 1 1.000000
+      specular 0.03 0.03 0.03 1.000000 
+      emissive 0.900000 0.900000 0.900000 1.000000
+          
+      texture_unit
+      {
+        // texture DICT_APRILTAG_16h5_id2.png
+        texture DICT_APRILTAG_36h11_id120.png
+        // texture marker.png
+        // filtering anisotropic
+        // max_anisotropy 16
+		scale 1.0 1.0
+		tex_address_mode border
+        tex_border_colour 1.0 1.0 0.3 		
+      }
+    }
+  }
+}
+
+
+material marker300
+{
+  receive_shadows on
+
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1.000000
+      diffuse 1 1 1 1.000000
+      specular 0.03 0.03 0.03 1.000000 
+      emissive 0.900000 0.900000 0.900000 1.000000
+          
+      texture_unit
+      {
+        texture DICT_APRILTAG_36h11_id300.png
+		scale 1.0 1.0
+		tex_address_mode border
+        tex_border_colour 1.0 1.0 0.3 		
+      }
+    }
+  }
+}
+
+material marker301
+{
+  receive_shadows on
+
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1.000000
+      diffuse 1 1 1 1.000000
+      specular 0.03 0.03 0.03 1.000000 
+      emissive 0.900000 0.900000 0.900000 1.000000
+          
+      texture_unit
+      {
+        texture DICT_APRILTAG_36h11_id301.png
+		scale 1.0 1.0
+		tex_address_mode border
+        tex_border_colour 1.0 1.0 0.3 		
+      }
+    }
+  }
+}
+
+material marker302
+{
+  receive_shadows on
+
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1.000000
+      diffuse 1 1 1 1.000000
+      specular 0.03 0.03 0.03 1.000000 
+      emissive 0.900000 0.900000 0.900000 1.000000
+          
+      texture_unit
+      {
+        texture DICT_APRILTAG_36h11_id302.png
+		scale 1.0 1.0
+		tex_address_mode border
+        tex_border_colour 1.0 1.0 0.3 		
+      }
+    }
+  }
+}
+
+material marker303
+{
+  receive_shadows on
+
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1.000000
+      diffuse 1 1 1 1.000000
+      specular 0.03 0.03 0.03 1.000000 
+      emissive 0.900000 0.900000 0.900000 1.000000
+          
+      texture_unit
+      {
+        texture DICT_APRILTAG_36h11_id303.png
+		scale 1.0 1.0
+		tex_address_mode border
+        tex_border_colour 1.0 1.0 0.3 		
+      }
+    }
+  }
+}
+
+material blah
+{
+  receive_shadows on
+
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1.000000
+      diffuse 1 1 1 1.000000
+      specular 0.03 0.03 0.03 1.000000 
+      emissive 0.900000 0.900000 0.900000 1.000000
+
+      //texture_unit
+      //{
+      // colour_op_ex source1 src_manual src_current 1 0 0
+      //}
+
+      texture_unit
+      {
+        // texture DICT_APRILTAG_16h5_id2.png
+        texture DICT_APRILTAG_36h11_id120.png
+        // texture marker.png
+        scale 1.0 1.0
+        tex_address_mode border
+        tex_border_colour 1.0 1.0 0.3 
+      }
+    }
+  }
+}
+
+
+
+material marker/white
+{
+  receive_shadows off
+
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1.000000
+      diffuse 1 1 1 1.000000
+      specular 0.03 0.03 0.03 1.000000 
+      emissive 0.900000 0.900000 0.900000 1.000000
+
+      texture_unit
+      {
+        colour_op_ex source1 src_manual src_current 1 1 1
+      }
+
+    }
+  }
+}

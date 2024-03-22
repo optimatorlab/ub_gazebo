@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="soar_bing">
+    <static>1</static>
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>1011 642</size>
+          </plane>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>65535</collide_bitmask>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>100</mu>
+              <mu2>50</mu2>
+            </ode>
+            <torsional>
+              <ode/>
+            </torsional>
+          </friction>
+          <bounce/>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <plane>
+	          <normal>0 0 1</normal>
+            <size>1011 642</size> 
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://soar_bing/materials/scripts</uri>
+            <uri>model://soar_bing/materials/textures</uri>
+            <name>soar_bing</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
+

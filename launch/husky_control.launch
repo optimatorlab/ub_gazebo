@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="simulation" default="$(optenv ROBOT_SIMULATION false)"/>
+  <arg name="robot_namespace" default="$(optenv ROBOT_NAMESPACE robot)"/>
+  <arg name="enable_ekf" default="$(optenv ENABLE_EKF true)"/>
+
+  <arg name="laser_enabled"            />
+  <arg name="laser_secondary_enabled"  />
+  <arg name="gz_lat"      />
+  <arg name="gz_lon"      />
+  <arg name="gz_alt_msl"  />
+  <arg name="gz_heading" default="0" />
+  <arg name="webcam_pitch" />
+
+  
+  <!-- Generate the tf_prefix from the namespace -->
+  <!--OLD-->
+  <arg name="tfpre" default="$(arg robot_namespace)_tf" />
+  <!--<arg name="tfpre" default="$(arg robot_namespace)" /> -->
+  <!-- Put value on the parameter server in the group's namespace -->
+  <!--OLD-->
+  <param name="tf_prefix" value="$(arg robot_namespace)_tf" />
+  <!--<param name="tf_prefix" value="$(arg robot_namespace)" />-->
+  
+  <!-- FIXME  IS THIS USED??? -->
+  <param name="robot_description" command="$(find xacro)/xacro '$(find ub_gazebo)/urdf/ub_husky.urdf.xacro'"/>
+  
+  <arg name="config_extras"
+       default="$(eval optenv('HUSKY_CONFIG_EXTRAS', find('husky_control') + '/config/empty.yaml'))"/>
+
+  <!-- Load robot description -->
+  <include file="$(find ub_gazebo)/launch/husky_description.launch" >
+		<arg name="robot_namespace" value="$(arg robot_namespace)" />	 
+		<arg name="tfpre"           default="$(arg robot_namespace)_tf" /> 
+  
+		<arg name="laser_enabled"           value="$(arg laser_enabled)" />
+		<arg name="laser_secondary_enabled" value="$(arg laser_secondary_enabled)" />
+		
+		<arg name="gz_lat"     value="$(arg gz_lat)" />
+		<arg name="gz_lon"     value="$(arg gz_lon)" />
+		<arg name="gz_alt_msl" value="$(arg gz_alt_msl)" />
+		<arg name="gz_heading" default="0" />
+		<arg name="webcam_pitch" value="$(arg webcam_pitch)" />
+  </include>
+
+  <!-- Load controller configuration -->
+  <rosparam command="load" file="$(find husky_control)/config/control.yaml" />
+
+  <!-- Spawn controllers -->
+  <rosparam param="husky_velocity_controller/base_frame_id" subst_value="True">$(arg tfpre)/base_link</rosparam>
+  <node name="base_controller_spawner" pkg="controller_manager" type="spawner"
+        args="husky_joint_publisher husky_velocity_controller"/>
+  <rosparam param="wheel_radius_multiplier" ns="husky_velocity_controller" subst_value="True">
+        $(optenv HUSKY_WHEEL_MULTIPLIER 1.0)
+  </rosparam>
+
+  <!-- Start EKF for localization -->
+  <group if="$(arg enable_ekf)" >
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
+      <rosparam command="load" file="$(find husky_control)/config/localization.yaml" />
+    </node>
+  </group>
+
+  <node pkg="interactive_marker_twist_server" type="marker_server" name="twist_marker_server" output="screen">
+    <param name="link_name" value="$(arg tfpre)/base_link" />
+    <param name="tf_prefix" value="$(arg tfpre)" />    
+  </node>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+	<!--FIXME - should this be uncommented? -->
+    <!--<remap from="robot_description" to="$(arg robot_namespace)/robot_description"/>-->
+    <param name="tf_prefix" value="$(arg tfpre)" />
+  </node>
+
+  <node pkg="twist_mux" type="twist_mux" name="twist_mux">
+    <rosparam command="load" file="$(find husky_control)/config/twist_mux.yaml" />
+    <remap from="cmd_vel_out" to="husky_velocity_controller/cmd_vel"/>
+  </node>
+
+  <!-- Override the default control parameters, see config/empty.yaml for default. -->
+  <rosparam command="load" file="$(arg config_extras)" subst_value="true" />
+
+</launch>

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="gui" default="true" doc="Show GUI? [true, false]"/>
+  <arg name="headless" default="false" doc="Headless? [true, false]"/>  <!-- I don't think this actually does anything -->
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+
+	<!-- Choose ONE of these approaches...
+		1.  Use one of the default gazebo worlds (no package specified)
+			See below for potential worlds
+			Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable		
+			<arg name="world_name" value="worlds/cafe.world"/>
+			<arg name="world_name" value="worlds/willowgarage.world"/>    
+
+		2.  Use a world from a specific package 
+			Here are some examples:	
+			<arg name="world_name" value="$(find husky_gazebo)/worlds/clearpath_playpen.world"/>
+			<arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/turtlebot3_world.world"/>
+			<arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/turtlebot3_autorace.world"/>
+	-->
+	<arg name="world_name" value="$(find husky_gazebo)/worlds/clearpath_playpen.world"/>
+			  	
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <include file="$(find ub_gazebo)/launch/husky_spawn.launch">
+	<arg name="robot_namespace" default="husky/1"/>  <!-- Each robot must have a unique namespace -->
+	<arg name="x"               default="0.0"    />
+	<arg name="y"               default="0.0"    />
+	<arg name="z"               default="0.0"    />
+	<arg name="yaw"             default="1.57"   />
+  </include>
+  
+  <include file="$(find ub_gazebo)/launch/husky_spawn.launch">
+	<arg name="robot_namespace" default="husky/2"/>  <!-- Each robot must have a unique namespace -->
+	<arg name="x"               default=" 1.0"    />
+	<arg name="y"               default="-2.0"    />
+	<arg name="z"               default=" 0.0"    />
+	<arg name="yaw"             default=" 2.2"   />
+  </include>
+   
+</launch>
+
+
+
+<!--
+cd /usr/share/gazebo-11/worlds 
+ls
+
+actor_bvh.world                   fiducial.world                 lift_drag_demo.world            polyline.world             simple_gripper.world
+actor.world                       flash_light_plugin_demo.world  lights.world                    population.world           single_rotor_demo.world
+animated_box.world                flocking.world                 linear_battery_demo.world       pr2.world                  sonar_demo.world
+animation_tension.world           force_torque_demo.world        logical_camera.world            presentation.world         sphere_atlas_demo.world
+attach_lights.world               friction_demo.world            lookat_demo.world               pressure_sensor.world      spotlight_shadows_demo.world
+blank.world                       friction_pyramid.world         magnetometer.world              profiler.world             ssao_plugin.world
+blink_visual.world                fuel_models.world              mass_on_rails.world             projector.world            stacks.world
+cafe.world                        gravity_compensation.world     misalignment_plugin_demo.world  random_velocity.world      static_map_plugin.world
+camera_intrinsics.world           gripper.world                  mud_bitmask.world               ray_cpu.world              timer_gui.world
+camera.world                      harness.world                  mud.world                       ray_noise_plugin.world     torsional_friction_demo.world
+cart_demo.world                   heightmap_dem.world            multilink_shape.world           reflectance.world          touch_plugin_demo.world
+cessna_demo.world                 heightmap.world                nested_model.world              road_textures.world        tracked_vehicle_simple.world
+collision_zero.world              hydra_demo.world               nested_multilink_shape.world    road.world                 tracked_vehicle_wheeled.world
+contact.world                     imu_demo.world                 openal.world                    robocup09_spl_field.world  transporter.world
+contain_plugin_demo.world         initial_velocity.world         ortho.world                     robocup14_spl_field.world  trigger.world
+contain_plugin_moving_demo.world  init_joint_control.world       osrf_elevator.world             robocup_3Dsim.world        twin_rotor_demo.world
+deform_visual.world               iris_arducopter_demo.world     pioneer2dx_camera.world         rubble.world               underwater.world
+depth_camera2.world               joint_damping_demo.world       pioneer2dx_laser_camera.world   seesaw.world               variable_gearbox_plugin.world
+depth_camera.world                joint_friction_demo.world      pioneer2dx_laser.world          shapes_bitmask.world       willowgarage.world
+elevator.world                    joints.world                   pioneer2dx.world                shapes_layers.world        wind_demo.world
+empty_1_0.world                   joy_demo.world                 plane_demo.world                shapes_shininess.world     wireless_sensors.world
+empty_bullet.world                keys_to_cmd_vel.world          plane_propeller_demo.world      shapes.world               zephyr_demo.world
+empty_sky.world                   led_plugin_demo.world          plot3d.world                    sim_events.world
+empty.world                       lensflare_plugin.world         plugin.world                    simple_arm_teleop.world
+everything.world                  lensflare_wideangle_cam.world  point_light_shadows_demo.world  simple_arm.world
+-->

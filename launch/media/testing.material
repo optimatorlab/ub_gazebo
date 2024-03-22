@@ -1,0 +1,53 @@
+material testing/material
+{
+  receive_shadows on
+
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1.000000
+      diffuse 1 1 1 1.000000
+      specular 0.03 0.03 0.03 1.000000 
+      emissive 0.900000 0.900000 0.900000 1.000000
+
+      //texture_unit
+      //{
+      // colour_op_ex source1 src_manual src_current 1 0 0
+      //}
+
+      texture_unit
+      {
+        // texture DICT_APRILTAG_16h5_id2.png
+        texture DICT_APRILTAG_36h11_id120.png
+        scale 1.0 1.0
+        tex_address_mode border
+        tex_border_colour 1.0 1.0 0.3 
+      }
+    }
+  }
+}
+
+
+
+material testing/white
+{
+  receive_shadows on
+
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1.000000
+      diffuse 1 1 1 1.000000
+      specular 0.03 0.03 0.03 1.000000 
+      emissive 0.900000 0.900000 0.900000 1.000000
+
+      texture_unit
+      {
+        colour_op_ex source1 src_manual src_current 1 1 1
+      }
+
+    }
+  }
+}

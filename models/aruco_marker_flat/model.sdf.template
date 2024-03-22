@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="aruco_marker_flat">
+    <pose>0 0 0 0 0 0</pose>
+    <static>true</static>
+    <link name="board_link">
+      <gravity>0</gravity>   
+      <visual name="board_visual">
+        <!--<pose>-0.00005 0 0 0 0 0</pose>-->
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>{ board_width } { board_width } 0.005</size>
+          </box>
+        </geometry>			
+        <material>
+          <script>
+            <uri>model://aruco_marker_flat/materials/scripts</uri>
+            <uri>model://aruco_marker_flat/materials/textures</uri>
+            <name>marker/white</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    
+    <link name="aruco_link">
+      <gravity>0</gravity>	
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>10.001</mass>
+        <inertia>
+          <ixx>1.8750008333333333e-06</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>1.8750008333333333e-06</iyy>
+          <iyz>0.0</iyz>
+          <izz>3.7499999999999997e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name="visual">
+        <!--<pose>-0.00005 0 0 0 0 0</pose>-->
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>{ marker_width } { marker_width } 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://aruco_marker_flat/materials/scripts</uri>
+            <uri>model://aruco_marker_flat/materials/textures</uri>
+            <name>{ marker_name }</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>{ marker_width } { marker_width } 0.001</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>   
+    
+    <joint name="board_aruco_joint" type="fixed">
+		<parent>board_link</parent>
+		<child>aruco_link</child>
+		<pose>0 0 0 0 0 0</pose>
+		<axis>
+			<xyz>0 0 0</xyz>
+			<limit>
+				<lower>0</lower>
+				<upper>0</upper>
+			</limit>
+		</axis>
+    </joint>
+  </model>
+</sdf>
