@@ -1,0 +1,15 @@
+material soar_bing
+{
+  receive_shadows off
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture soar_bing.png
+        scale 0.731 0.731
+      }
+    }
+  }
+}

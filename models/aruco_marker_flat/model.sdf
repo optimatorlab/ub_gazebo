@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="aruco_marker_flat">
+	  
+	  
+	<!-- Attach a landing board -->
+	<link name="board_link">
+		<gravity>0</gravity>
+		<!--
+		  <inertial>
+			<pose>0 0 0 0 0 0</pose>
+			<mass>0.001</mass>
+			<inertia>
+			  <ixx>1.8750008333333333e-06</ixx>
+			  <ixy>0.0</ixy>
+			  <ixz>0.0</ixz>
+			  <iyy>1.8750008333333333e-06</iyy>
+			  <iyz>0.0</iyz>
+			  <izz>3.7499999999999997e-06</izz>
+			</inertia>
+		  </inertial>		
+		  -->
+		<visual name="board_visual">
+			<pose>-0.00005 0 0 0 0 0</pose>
+			<geometry>
+			  <box>
+				<size>1.0 1.0 0.005</size>
+			  </box>
+			</geometry>			
+			<!--
+			<material>
+			  <script>
+				<name>Gazebo/White</name>
+				<uri>file://media/materials/scripts/gazebo.material</uri>
+			  </script>
+			<ambient>1 1 1 1</ambient>			  
+			</material>
+			-->
+			<material>
+			  <script>
+				<uri>model://aruco_marker_flat/materials/scripts</uri>
+				<uri>model://aruco_marker_flat/materials/textures</uri>
+				<name>marker/white</name>
+			  </script>
+			</material>
+			
+
+		</visual>
+	</link>
+		 	  
+    <link name="aruco_link">
+	  <gravity>0</gravity>	
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>10.001</mass>
+        <inertia>
+          <ixx>1.8750008333333333e-06</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>1.8750008333333333e-06</iyy>
+          <iyz>0.0</iyz>
+          <izz>3.7499999999999997e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name="visual">
+        <pose>-0.00005 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.75 0.75 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://aruco_marker_flat/materials/scripts</uri>
+            <uri>model://aruco_marker_flat/materials/textures</uri>
+            <name>marker120</name>
+          </script>
+        </material>
+      </visual>
+      <!-- Hide the marker from the back -->
+      <!--
+      <visual name="rear_visual">
+        <pose>-0.00005 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.5 0.01</size>
+          </box>
+        </geometry>
+      </visual>
+      -->
+      <collision name="collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.75 0.75 0.001</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+    
+	<!-- Attach an ArUco tag to the landing board-->
+	<!--
+	<joint name="aruco_joint" type="fixed">
+		<child link="aruco_link" />
+		<parent link="board_link" />
+		<origin xyz="0.0 0 0.0064" rpy="0 0 0"/>
+	</joint>	
+	-->
+  </model>
+</sdf>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="gui" default="true" doc="Show GUI? [true, false]"/>
+  <arg name="headless" default="false" doc="Headless? [true, false]"/>  <!-- I don't think this actually does anything -->
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+
+  	<arg name="world_name" value="$(find ub_gazebo)/worlds/SOAR.world"/>		  	
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="false"/>
+  </include>
+  
+  <!--
+  <include file="$(find husky_gazebo)/launch/spawn_husky.launch">
+  </include>
+  -->
+  
+</launch>

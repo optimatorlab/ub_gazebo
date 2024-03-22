@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="asphalt_plane_for_laser">
+    <static>true</static>
+    <pose>0 0 -0.005</pose>
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>1011 642 .01</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>1011 642 .01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://asphalt_plane_for_laser/materials/scripts</uri>
+            <uri>model://asphalt_plane_for_laser/materials/textures</uri>
+            <name>vrc/asphalt</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
+
+
+
