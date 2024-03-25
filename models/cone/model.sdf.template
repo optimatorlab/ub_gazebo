@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="Orange cone">
+    <pose>0 0 0 1.5708 0 0</pose>
+    <static>true</static>
+    <link name="link">
+      <gravity>0</gravity>   	 
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://cone/meshes/cone.obj</uri>
+            <scale>{ scale_x } { scale_y } { scale_z }</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://cone/meshes/cone.obj</uri>
+            <scale>{ scale_x } { scale_y } { scale_z }</scale>
+          </mesh>
+        </geometry>
+  	    <material>
+          <ambient>{ color_r} { color_g} { color_b} 1</ambient>
+          <diffuse>{ color_r} { color_g} { color_b} 1</diffuse>
+  	    </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
