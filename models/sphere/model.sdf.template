@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="sphere">
+    <pose>0 0 0 1.5708 0 0</pose>
+    <static>{ isStatic }</static>
+    <link name="link">
+      <gravity>{ useGravity }</gravity>	 
+      <collision name="collision">
+        <geometry>
+          <sphere>
+            <radius>{ radius }</radius>
+          </sphere>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <sphere>
+            <radius>{ radius }</radius>
+          </sphere>
+        </geometry>
+  	    <material>
+          <ambient>{ color_r} { color_g} { color_b} 1</ambient>
+          <diffuse>{ color_r} { color_g} { color_b} 1</diffuse>
+  	    </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

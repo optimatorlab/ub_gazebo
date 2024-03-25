@@ -17,6 +17,7 @@
 			<arg name="world_name" value="$(find husky_gazebo)/worlds/clearpath_playpen.world"/>
 			<arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/turtlebot3_world.world"/>
 			<arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/turtlebot3_autorace.world"/>
+			<arg name="world_name" value="$(find ub_gazebo)/worlds/SOAR.world"/>			
 	-->
 	<arg name="world_name" value="$(find husky_gazebo)/worlds/clearpath_playpen.world"/>
 			  	

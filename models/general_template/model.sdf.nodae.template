@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="{ model_name }">
+      <include>
+        <uri>model://{ model_name }/</uri>		  
+        <!--<scale>5 5 5</scale>-->
+        <!-- scaling doesn't work -->		
+      </include>
+  </model>
+</sdf>
