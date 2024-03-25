@@ -359,12 +359,6 @@ class launcher():
 		self.gazeboModelName   = gazeboModelName
 		self.namespace         = namespace
 		self.modelYawOffsetRad = modelYawOffsetRad
-		# self.x
-		# self.y
-		# self.z
-		# self.rollRad
-		# self.pitchRad
-		# self.yawRad
 
 		addModel(objectType, gazeboModelName, namespace, modelYawOffsetRad, x, y, z, rollRad, pitchRad, yawRad, args)
 			
@@ -373,31 +367,6 @@ class launcher():
 		return deleteModel(self.gazeboModelName)
 
 	def edit(self):
-		'''
-		rosservice call /gazebo/set_model_state '{model_state: { model_name: iris_0, pose: { position: { x: 38, y: -18 ,z: 0 }, orientation: {x: 0, y: 0, z: 0, w: 1 } }, twist: { linear: {x: 0.0 , y: 0 ,z: 0 } , angular: { x: 0.0 , y: 0 , z: 0.0 } } , reference_frame: world } }'
-		'''
-		print('FIXME -- objectEdit')
+		# FIXME -- Not implemented
+		return editModel()
 		
-		
-
-	'''
-	def shutdown(self):
-		# Gracefully shut down all of our windows/processes
-		
-		# FIXME -- Anything to do here?
-						
-		rospy.sleep(1)
-						
-		# This shuts down this node, but it doesn't kill roscore:
-		print("Sending manual ROS node shutdown signal.")
-		rospy.signal_shutdown("User has issued node shutdown command.")
-	'''
-		
-'''		
-if __name__ == '__main__':
-	try:
-		gz()
-
-	except rospy.ROSInterruptException:		
-		print("gz node terminated.")	
-'''
