@@ -76,7 +76,7 @@ Finally, add the following to `~/.bashrc`:
 ```
 # Update model/resource paths to let Gazebo know where to find some of our materials
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/catkin_ws/src/ub_gazebo/models
-export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/gazebo/models
+export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/.gazebo/models
 export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:~/catkin_ws/src/ub_gazebo/launch/media
 export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:~/catkin_ws/src/ub_gazebo/worlds
 
